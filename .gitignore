@@ -1,0 +1,15 @@
+# Generated page previews of the Word template
+qa_render/
+
+# Third-party manufacturer documents
+moxa-aig-301-series-manual-v2.0.pdf
+How-to-make-a-demo-kit-for-data-visualization_powered-by-ThingsPro-Edge.pdf
+
+# Local secrets and bytecode
+.env
+.env.*
+__pycache__/
+*.pyc
+
+# Word lock files
+~$*
