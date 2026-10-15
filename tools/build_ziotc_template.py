@@ -102,6 +102,18 @@ CHAPTERS: list[tuple[str, list[str]]] = [
         "Process Reader Data",
         "Sample Applications",
     ]),
+    ("On-Reader Application Development (Edge)", [
+        "On-Reader Application Overview",
+        "On-Reader Architecture and Data Flow",
+        "Develop Python Applications",
+        "Develop Node.js Applications",
+        "Edge Data Filtering",
+        "Edge Processing and Analytics",
+        "Package an Application",
+        "Deploy an Application",
+        "Start and Stop Applications",
+        "Manage User Applications",
+    ]),
     ("Deployment and Scaling", [
         "Single Reader Deployment",
         "Multiple Reader Architecture",
@@ -458,6 +470,20 @@ def authoring_prompt(chapter: str, section: str) -> str:
     if "migration" in c:
         return ("[Authoring prompt] Define the source and target, prerequisites, feature mapping, migration steps, "
                 "validation criteria, limitations, and rollback guidance.")
+    if "on-reader" in c:
+        if "overview" in s or "architecture" in s:
+            return ("[Authoring prompt] Explain what an application running on the reader can do, how tag, BLE, and "
+                    "management data reach it, what it can change before data leaves the reader, and how this differs "
+                    "from an external MQTT or REST application.")
+        if "python" in s or "node" in s:
+            return ("[Authoring prompt] State the supported runtime and version, the project layout, how the application "
+                    "reads reader data, how it returns or publishes a result, and a minimal working example.")
+        if "filtering" in s or "processing" in s or "analytics" in s:
+            return ("[Authoring prompt] Explain what the application can filter or compute on the reader, which inputs it "
+                    "uses, what still goes to the destination, the limits, and how to confirm the result.")
+        return ("[Authoring prompt] Give the prerequisites and the steps to package, install, start, stop, or remove the "
+                "application. Include the expected status and where its logs and events appear. Event meaning stays in "
+                "Management Events.")
     if "deployment" in c:
         return ("[Authoring prompt] Describe the topology, components, identity model, provisioning approach, "
                 "capacity assumptions, failure handling, and operational tradeoffs.")
@@ -674,7 +700,7 @@ def build_document() -> None:
     p.paragraph_format.space_after = Pt(10)
     p.add_run(
         "Use this template to create a consistent product guide for setup, connectivity, RFID operations, "
-        "data integration, security, maintenance, troubleshooting, migration, and API reference content."
+        "data integration, on-reader applications, security, maintenance, troubleshooting, migration, and API reference content."
     )
     p = doc.add_paragraph(style="Small Instruction")
     p.paragraph_format.space_before = Pt(80)

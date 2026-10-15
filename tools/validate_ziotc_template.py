@@ -16,8 +16,8 @@ with ZipFile(docx_path) as package:
     settings_xml = package.read("word/settings.xml").decode("utf-8")
     styles_xml = package.read("word/styles.xml").decode("utf-8")
 
-assert heading_1_count == 18, heading_1_count
-assert heading_2_count == 138, heading_2_count
+assert heading_1_count == 19, heading_1_count
+assert heading_2_count == 148, heading_2_count
 assert len(document.tables) == 3, len(document.tables)
 assert "TOC \\o" in document_xml and "\\h \\z \\u" in document_xml
 assert "word/numbering.xml" in names
